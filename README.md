@@ -1,2 +1,3 @@
 # Aquamino
-Aquamino official github repository
+Aquamino official github repository.
+Not complete yet.
