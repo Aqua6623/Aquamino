@@ -1,0 +1,25 @@
+local tips={
+    "",
+    "哦哦，哦哦哦！",
+    "也许我只不过是溜大了",
+    "我超，劲爆",
+    "感觉……不如……Techmino……游戏性……",
+    "O-spin是什么 不知道",
+    "卖弱的一律当5pps处理",
+    "狗都sub30了！",
+    "哇袄！！！",
+    "Lua天下第一！",
+    "海兰就是个彩笔打块的，懂什么代码",
+    "成Techmino的陪衬了",
+    "Aquamino交流群变成了某mino交流群，哈哈。",
+    "Aquamino buhaowan",
+    "井h.studio <include>",
+    "游玩时出现问题可以发邮件至mintechoaqua@163.com进行反馈",
+    "Error main.lua:6623: attempt to compare boolean with number",
+    "做除法做出二进制无限小数导致位数过剩，这种情况就是“除剩”",
+    "sub14 when",
+    "上不去下不来它卡在这了",
+    "脑袋空空……",
+    "少打方块多读书"
+}
+return tips
