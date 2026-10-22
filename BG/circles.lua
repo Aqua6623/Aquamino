@@ -128,11 +128,11 @@ function bg.draw()
     gc.setShader()
     gc.setBlendMode('alpha')
 
+    gc.setColor(0,0,0)
+    gc.circle('fill',0,0,720)
     gc.setColor(1,1,1)
     gc.setLineWidth(4)
     gc.circle('line',0,0,720)
-    gc.setColor(0,0,0)
-    gc.circle('fill',0,0,720)
 
     gc.setShader(circleShader)
     if circleMode==1 then

@@ -60,7 +60,7 @@ local function calculateDirection(Ax,Ay,Bx,By,Cx,Cy)--计算B点角平分线对�
     else
         dx=ABx/(ABx^2+ABy^2)^.5+BCx/(BCx^2+BCy^2)^.5
         dy=ABy/(ABx^2+ABy^2)^.5+BCy/(BCx^2+BCy^2)^.5
-        return -dy/(dx^2+dy^2)^.5*min(2,2/(dx^2+dy^2)^.5),dx/(dx^2+dy^2)^.5*min(2,2/(dx^2+dy^2)^.5)
+        return -dy/(dx^2+dy^2)^.5*min(2^.5,2/(dx^2+dy^2)^.5),dx/(dx^2+dy^2)^.5*min(2^.5,2/(dx^2+dy^2)^.5)
     end
 end
 function trailModule.drawLine(trail,colorR,colorG,colorB)
@@ -74,6 +74,22 @@ function trailModule.drawLine(trail,colorR,colorG,colorB)
         local a=trail.posList[i]/trail.time
         setColor(colorR,colorG,colorB,trail.alpha*a)
         poly('fill',p[i-2]+dx1,p[i-1]+dy1,p[i-2]-dx1,p[i-1]-dy1,p[i+1]-dx2,p[i+2]-dy2,p[i+1]+dx2,p[i+2]+dy2)
+        --setLineWidth(trail.width)
+        --circle('fill',p[i+1],p[i+2],trail.width/10)
+    end
+end
+function trailModule.drawLine2(trail,colorR,colorG,colorB)
+    for i=4,#trail.posList,3 do
+        local p=trail.posList
+        --计算1号点角平分线对应的法向量
+        local dx1,dy1=calculateDirection(p[i-5],p[i-4],p[i-2],p[i-1],p[i+1],p[i+2])
+        --计算2号点角平分线对应的法向量
+        local dx2,dy2=calculateDirection(p[i-2],p[i-1],p[i+1],p[i+2],p[i+4],p[i+5])
+        dx1,dy1,dx2,dy2=dx1*trail.width/2,dy1*trail.width/2,dx2*trail.width/2,dy2*trail.width/2
+        local a1=trail.posList[i-3]/trail.time
+        local a2=trail.posList[i]/trail.time
+        setColor(colorR,colorG,colorB,trail.alpha)
+        poly('fill',p[i-2]+dx1*a1,p[i-1]+dy1*a1,p[i-2]-dx1*a1,p[i-1]-dy1*a1,p[i+1]-dx2*a2,p[i+2]-dy2*a2,p[i+1]+dx2*a2,p[i+2]+dy2*a2)
         --setLineWidth(trail.width)
         --circle('fill',p[i+1],p[i+2],trail.width/10)
     end

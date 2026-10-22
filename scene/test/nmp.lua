@@ -4,9 +4,9 @@ function nmp.init()
     nmp.img=gc.newImage('pic/assets/nmp1.png')
     local sha=fs.newFile('shader/normal map.glsl'):read()
     nmp.shader=gc.newShader(sha)
-    scene.watermark=false
+    win.watermark=false
     nmp.angle=0
-    nmp.light={1,0,-.5}
+    nmp.light={1,0,1}
 end
 function nmp.update(dt)
     if love.keyboard.isDown('left') then nmp.angle=nmp.angle+dt*.5 end
@@ -15,9 +15,10 @@ function nmp.update(dt)
 end
 function nmp.draw()
     nmp.shader:send('light',nmp.light)
+    nmp.shader:send('ambientLight',.15)
     gc.setShader(nmp.shader)
-    gc.draw(nmp.img,0,0,0,1,1,32,32)
+    gc.draw(nmp.img,0,0,0,2,2,128,128)
     gc.setShader()
-    gc.circle('fill',80*cos(nmp.angle*math.pi),80*-sin(nmp.angle*math.pi),5)
+    gc.circle('fill',480*cos(nmp.angle*math.pi),480*sin(nmp.angle*math.pi),10)
 end
 return nmp

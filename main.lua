@@ -95,7 +95,9 @@ abs=math.abs
 
 ins,rem=table.insert,table.remove
 
-math.randomseed(os.time()-6623)
+local rseed=os.time()-6623
+math.randomseed(rseed)
+print("math.random Initial seed: "..rseed)
 for i=1,5 do rand() end
 
 do
@@ -189,6 +191,9 @@ win={
         win.scale=win.H/win.W<9/16 and win.H/1080 or win.W/1920
         love.resize(win.W,win.H)
     end,
+    getMousePosition=function ()
+        return adaptWindow:inverseTransformPoint(ms.getX()+.5,ms.getY()+.5)
+    end,
     UI={
         back=gc.newImage('pic/UI/sign/back.png'),     --120*70
         lang=gc.newImage('pic/UI/sign/language.png'), --200*200
@@ -252,7 +257,8 @@ scene={
 --win.watermark=false win.showPerformance=false
 
 --scene.cur=require('scene/secret/AquaMarbler')
---scene.cur=require('scene/test/trail')
+--scene.cur=require('minigame/square2/battle')
+scene.cur=require('scene/test/nmp')
 --scene.cur=require('mino/game') scene.cur.mode='map_test'
 
 win.x,win.y=love.window.getPosition()
@@ -425,7 +431,7 @@ function love.draw()
     --local dpiS=love.window.getDPIScale()
     --local rw,rh=dpiS*win.W,dpiS*win.H
 
-    local rx,ry=adaptWindow:inverseTransformPoint(ms.getX()+.5,ms.getY()+.5)
+    local rx,ry=win.getMousePosition()
     local ma=win.UI.mouse
     local msa=ma.scrollAnimTimer
 

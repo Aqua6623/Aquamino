@@ -8,9 +8,9 @@ gc.setColor(1,1,1)
 gc.rectangle('fill',0,0,400,400)
 gc.setCanvas()
 function BGTest.init()
-    scene.BG=require('BG/Symphonic Laser')
+    scene.BG=require('BG/circles')
     if scene.BG.init then scene.BG.init() end
-    mus.add('music/Hurt Record/Symphonic Laser','whole','ogg',45,200*60/128)
+    --mus.add('music/Hurt Record/Symphonic Laser','whole','ogg',45,200*60/128)
     --BGTest.sd=gc.newShader('shader/merge.glsl')
     --scene.setShader('shader/mosaic.glsl')
     --scene.shader:send('phase',t)
@@ -24,7 +24,7 @@ function BGTest.update(dt)
     t=t+dt
     --scene.shader:send('phase',t)
 
-    scene.BG.time=mus.whole:tell()
+    --scene.BG.time=mus.whole:tell()
 end
 function BGTest.draw()
     --gc.draw(sddl,0,0,0,1.25,1.25,270,270)

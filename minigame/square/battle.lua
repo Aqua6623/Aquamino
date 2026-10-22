@@ -1009,10 +1009,10 @@ function gb.keyP(k)
         })
     end
 
-    local n=tonumber(k)
+    --[[local n=tonumber(k)
     if n then
         garbageDeploy(love.keyboard.isDown('lshift','rshift') and 'R' or 'L',n)
-    end
+    end]]
     --[[if k=='s' then
         shuffleColor(love.keyboard.isDown('lshift','rshift') and 'R' or 'L')
     end]]
